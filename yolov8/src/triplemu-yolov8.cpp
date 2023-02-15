@@ -22,7 +22,16 @@ static float softmax(
 	int length
 )
 {
-	const float alpha = *std::max_element(src, src + length);
+	float alpha = -FLT_MAX;
+	for (int c = 0; c < length; c++)
+	{
+		float score = src[c];
+		if (score > alpha)
+		{
+			alpha = score;
+		}
+	}
+
 	float denominator = 0;
 	float dis_sum = 0;
 	for (int i = 0; i < length; ++i)
@@ -41,7 +50,7 @@ static float softmax(
 static void generate_proposals(
 	int stride,
 	const ncnn::Mat& feat_blob,
-	float prob_threshold,
+	const float prob_threshold,
 	std::vector<Object>& objects
 )
 {
@@ -58,7 +67,6 @@ static void generate_proposals(
 		for (int j = 0; j < num_grid_x; j++)
 		{
 
-			// 80,80,144
 			const float* matat = feat_blob.channel(i).row(j);
 
 			int class_index = 0;
