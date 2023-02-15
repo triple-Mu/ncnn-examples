@@ -18,9 +18,9 @@ struct Object
 
 static void generate_proposals(
 	const ncnn::Mat& anchors,
-	int stride,
+	const int stride,
 	const ncnn::Mat& feat_blob,
-	float prob_threshold,
+	const float prob_threshold,
 	std::vector<Object>& objects
 )
 {
