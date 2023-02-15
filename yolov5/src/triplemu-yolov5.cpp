@@ -16,11 +16,6 @@ struct Object
 	float prob;
 };
 
-static inline float sigmoid(float x)
-{
-	return 1.f / (1.f + exp(-x));
-}
-
 static void generate_proposals(
 	const ncnn::Mat& anchors,
 	int stride,
