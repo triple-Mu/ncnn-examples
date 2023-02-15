@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.11)
+project(triplemu-yolov5)
+set(CMAKE_CXX_STANDARD 14)
+find_package(OpenCV 4 REQUIRED)
+find_package(ncnn REQUIRED)
+add_executable(${PROJECT_NAME} src/triplemu-yolov5.cpp)
+target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBS})
+target_link_libraries(${PROJECT_NAME} ncnn)
