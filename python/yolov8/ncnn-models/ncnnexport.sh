@@ -7,7 +7,7 @@ onnx2ncnn \
   ${name}.param \
   ${name}.bin
 
-find ${PWD}/../coco128/ -type f >imagelist.txt
+find ${PWD}/../../../coco128/ -type f >imagelist.txt
 list=${PWD}/imagelist.txt
 
 ncnnoptimize \
