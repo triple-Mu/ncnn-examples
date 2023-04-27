@@ -86,7 +86,7 @@ def rtmdet_decode(feats: List[ndarray],
     else:
         indices = cv2.dnn.NMSBoxes(proposal_boxes, proposal_scores, conf_thres, iou_thres).flatten()
 
-    if not indices.size:
+    if not len(indices):
         return [], [], []
 
     nmsd_boxes: List[ndarray] = []
